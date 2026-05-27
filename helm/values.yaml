@@ -1,5 +1,5 @@
 service:
-  name: product-reviews
+  name: service-product-reviews
 image:
   repository: 952893849914.dkr.ecr.us-east-1.amazonaws.com/aicares-application/product-reviews
 containerPort: 3551
