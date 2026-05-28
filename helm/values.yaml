@@ -8,9 +8,9 @@ image:
 containerPort: 3551
 resources:
   limits:
-    memory: "100Mi"
+    memory: "200Mi"
   requests:
-    memory: "32Mi"
+    memory: "64Mi"
     cpu: "50m"
 env:
   - name: PRODUCT_REVIEWS_PORT
@@ -19,7 +19,29 @@ env:
     value: "product-reviews"
   - name: OTEL_EXPORTER_OTLP_ENDPOINT
     value: "http://otel-collector:4317"
+  - name: OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE
+    value: "cumulative"
+  - name: OTEL_PYTHON_LOG_CORRELATION
+    value: "true"
+  - name: PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION
+    value: "python"
   - name: DB_CONNECTION_STRING
     value: "host=postgresql user=astronomy_user password=astronomy_password dbname=astronomy_db"
+  - name: LLM_HOST
+    value: "llm"
+  - name: LLM_PORT
+    value: "8000"
+  - name: LLM_BASE_URL
+    value: "http://llm:8000/v1"
+  - name: LLM_MODEL
+    value: "astronomy-llm"
+  - name: OPENAI_API_KEY
+    value: "demo"
+  - name: PRODUCT_CATALOG_ADDR
+    value: "product-catalog:3550"
+  - name: FLAGD_HOST
+    value: "flagd"
+  - name: FLAGD_PORT
+    value: "8013"
 nodeSelector:
   eks.amazonaws.com/nodegroup: graviton-workers
