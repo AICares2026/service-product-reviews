@@ -18,3 +18,5 @@ env:
     value: "http://otel-collector:4317"
 nodeSelector:
   eks.amazonaws.com/nodegroup: graviton-workers
+  - name: DB_CONNECTION_STRING
+    value: "host=postgresql user=astronomy_user password=astronomy_password dbname=astronomy_db"
